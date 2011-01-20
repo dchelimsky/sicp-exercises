@@ -2,12 +2,28 @@
 
 (require "../expectations.scm")
 
+;(define (sum-of-squares-of-top-2 a b c)
+;  (cond
+;    ((and (<= a b) (< a c)) (+ (* b b) (* c c)))
+;    ((and (< b a) (< b c)) (+ (* a a) (* c c)))
+;   (else
+;     (+ (* a a) (* b b)))))
+
+(define (square a) (* a a))
+
+(define (sum-of-squares a b) (+ (square a) (square b)))
+
 (define (sum-of-squares-of-top-2 a b c)
   (cond
-    ((and (<= a b) (< a c)) (+ (* b b) (* c c)))
-    ((and (< b a) (< b c)) (+ (* a a) (* c c)))
-    (else
-     (+ (* a a) (* b b)))))
+    ((eq? a (min a b c)) (sum-of-squares b c))
+    ((eq? b (min a b c)) (sum-of-squares a c))
+    (else (sum-of-squares a b))))
+
+; what I'd really like to write is something like this:
+; (define (sum-of-squares-of-top-2 a b c)
+;   (sum-of-squares (top-2 a b c)))
+;
+; but I'm not sure about list syntax just yet
 
 (expect 2 (sum-of-squares-of-top-2 1 1 1))
 
