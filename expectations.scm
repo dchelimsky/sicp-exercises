@@ -4,6 +4,10 @@
 
 (define (expect outcome example)
   (cond
-    ((eq? outcome example) (write '\.))
+    ((eq? outcome example) (display "."))
     (else
-      (write 'F))))
+      (display (string-append
+              (string-append "\nexpected " (number->string outcome))
+              (string-append ", got " (number->string example))
+              "\n"
+              )))))
