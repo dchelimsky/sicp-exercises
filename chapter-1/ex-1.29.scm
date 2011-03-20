@@ -1,5 +1,7 @@
 #lang scheme
 
+(provide sum)
+
 ;Simpson's Rule is a more accurate method of numerical integration than the method illustrated above. Using Simpson's Rule, the integral of a function f between a and b is approximated as
 ;
 ;
